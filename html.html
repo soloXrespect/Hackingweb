@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Bot and Matrix Effect</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #00ff00;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+
+        /* Matrix Effect Styles */
+        .terminal {
+            text-align: center;
+        }
+        .typing {
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            width: 0;
+            animation: typing 4s steps(25, end) forwards, blink 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 18ch }
+        }
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+        .progress-bar {
+            width: 100%;
+            max-width: 400px;
+            background: #003300;
+            border: 1px solid #00ff00;
+            margin: 20px auto;
+            height: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: #00ff00;
+            width: 0%;
+            height: 100%;
+            animation: loading 6s linear forwards;
+        }
+        @keyframes loading {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+        .finished-message {
+            display: none;
+            margin-top: 20px;
+            color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hacker Bot Display</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      color: #00FF00; /* Neon green text for the hacker effect */
+      font-family: 'Courier New', monospace;
+      line-height: 1.5;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    /* Making the ASCII banner fixed at the top */
+    .ascii-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      background-color: #000;
+      color: #00FF00;
+      padding: 10px;
+      white-space: pre;
+      overflow-x: auto;
+      overflow-y: auto;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0, 255, 0, 0.3);
+      animation: flicker 0.3s infinite alternate; /* Flicker effect */
+    }
+
+    /* Text flicker animation */
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .content {
+      margin-top: 1000px; /* Space to scroll and let ASCII art stay visible */
+      padding: 20px;
+      color: white;
+      font-size: 18px;
+    }
+
+    /* Adding a terminal cursor effect */
+    .content:after {
+      content: '|';
+      display: inline-block;
+      color: #00FF00;
+      animation: blink 1s infinite step-start;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="ascii-banner">
+    <h2>
+        ⣿⣿⣿⣿⣿⣿⣿⠟⠉⠀⢨⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠈⠙⢿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⠃⣠⡞⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠘⣦⡀⢻⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⠋⢰⣿⠇⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⢹⣷⠀⢻⣿⣿⣿⣿
+        ⣿⣿⣿⡿⠋⢰⣼⣿⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣾⠀⠻⣿⣿⣿
+        ⣿⣿⡿⢁⣾⠸⣿⣿⡀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⣸⣿⡟⢸⣆⠹⣿⣿
+        ⣿⣿⡇⢾⣿⠀⣮⣿⣧⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢠⣿⣿⡖⢸⣿⡆⣿⣿
+        ⣿⣿⡇⠘⢿⠀⠹⣿⣿⣆⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢃⣼⣿⡿⠃⣸⡟⠁⣿⣿
+        ⣿⡟⣁⢸⣾⣧⠀⢶⣿⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢁⣾⣿⣿⠆⢀⣿⣿⢀⡙⣿
+        ⣿⢀⣿⡀⠹⣿⣎⠀⢹⣿⣿⣧⡈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠏⣠⣿⣿⣿⠁⠀⣾⡿⠃⣼⣧⢹
+        ⣿⠀⢿⡷⡈⢿⣿⣎⢀⠙⠿⢿⡏⢆⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢁⡜⣿⡿⠟⠁⢀⣾⣿⠟⣰⣿⡏⢸
+        ⠋⡀⢻⣷⡐⡀⢩⣿⠀⡀⡈⠲⠷⠈⢷⣦⡙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⣡⣴⠏⢠⡿⠆⡀⠀⢸⣯⠅⠐⣸⣿⠇⡘
+        ⠰⣷⡈⠻⣿⣌⠀⠙⠳⠄⠀⢰⣦⣄⠠⣿⣿⣷⣬⡙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠛⣩⣴⣾⣿⡇⢀⣤⣶⡀⢀⡴⠟⠁⢀⣴⡿⠋⣰⣷
+        ⣆⢻⣷⠀⠺⣿⣧⠀⠈⠲⡄⠸⠈⣻⣷⣌⠛⢿⣿⣿⣷⣌⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣉⣴⣿⣿⣿⠿⠋⣴⣿⡟⢸⠁⡴⠛⠀⢀⣾⡿⠂⣴⣿⢋
+        ⣿⡄⣙⣆⠢⠈⢽⣷⠀⠀⣤⣄⠑⢼⣿⣿⠀⠀⢉⠻⠿⣿⣿⣦⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⣡⣾⣿⡿⠿⢋⠁⠂⢀⣿⣿⠁⢀⣤⣄⠀⢠⣿⠍⠀⢂⣞⡁⣼
+        ⣿⣷⠈⠻⣷⣌⠢⠘⢿⡀⠈⠿⣷⣦⣉⠻⢥⣂⠀⠀⢶⣦⣽⣿⣿⣆⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢁⣾⣿⣿⣧⣴⠢⠀⠄⣪⠽⠋⣡⣶⣿⠟⠀⣸⠟⡁⢀⣴⡿⠏⢰⣿
+        ⣿⣿⡇⣦⡐⠺⣿⡂⢐⠀⡈⠂⠽⣿⣿⠬⢐⠨⠁⠈⠻⢿⣿⣿⣿⣿⢈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠸⣿⣿⣿⣿⠿⠂⠀⠩⢀⠠⢴⣿⡿⠅⠈⡀⠄⠀⣶⡿⠖⣠⡆⣼⣿
+        ⣿⣿⣷⡘⢿⣦⠀⠸⠶⣄⠀⢴⣶⣬⣉⢛⡒⠂⠀⢺⣿⣿⣿⣿⠋⣡⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⡉⠻⣿⣿⣿⣿⠂⠀⠒⣚⣋⣩⣴⣶⠄⢀⡴⠾⠂⢠⣾⠟⣠⣿⣿
+        ⣿⣿⣿⣧⠀⢽⣷⣬⡐⠈⠀⠀⠁⣛⣿⣖⣒⡂⠀⠙⢋⣿⣿⣿⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢸⣿⣿⣏⠙⠁⠀⣒⣒⣾⡿⠓⠁⠀⠈⠀⣠⣴⣿⠅⢀⣿⣿⣿
+        ⣿⣿⣿⣿⣷⣤⡉⠛⣿⣷⣄⠀⠀⠀⣉⣉⣉⠭⠀⠀⢉⣿⢿⣿⣷⣦⣍⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⣡⣶⣿⣿⠻⣟⠃⠀⠩⢭⣍⣉⡁⠀⠀⢀⣶⣿⡟⠋⣁⣴⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣷⣶⣬⣭⠃⠠⢾⣿⣿⡿⠿⢒⠠⠀⠁⣾⣿⢿⣿⣿⡇⢻⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⣿⣿⠿⡿⡆⠀⠀⠀⠺⠿⣿⣿⣿⣧⠀⢫⣭⣴⣶⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠀⠼⠋⣡⣴⣾⣷⠤⠂⠀⠉⠁⣼⣿⣿⣿⣆⢻⣿⣿⣿⣿⣿⣿⢃⣴⣿⡿⡿⡆⠁⠀⠀⡐⢴⣾⣶⣦⡉⠻⠄⢁⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⠉⢿⡟⣡⣾⣶⠊⠀⠀⠙⠃⢿⣿⣿⣦⡙⢿⣿⣿⠟⣡⣾⣿⣿⠇⠁⠁⡀⡈⠲⣿⣦⡙⠿⠏⠃⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣤⣄⡉⢰⣿⣿⢃⣾⡶⢀⣴⢂⣶⣶⣶⣬⣥⣶⣿⣿⣦⣭⣴⣶⣶⣆⢲⣀⠸⣾⣆⢹⣿⠷⡀⣁⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+        ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣌⣒⣀⠘⠩⠃⢘⡙⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡈⣝⡄⠫⠍⢀⡀⢂⣰⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+ ,ggggggggggg,      ,ggggggg,       ,gg,   ,ggggggggggg,     ,ggggggg,      ,gggg,   ,ggggggggggggggg
+ dP"""88""""""Y8,  ,dP""""""Y8b     i8""8i dP"""88""""""Y8, ,dP""""""Y8b   ,88"""Y8b,dP""""""88"""""""
+ Yb,  88      `8b  d8'    a  Y8     `8,,8' Yb,  88      `8b d8'    a  Y8  d8"     `Y8Yb,_    88       
+  `"  88      ,8P  88     "Y8P'      `88'   `"  88      ,8P 88     "Y8P' d8'   8b  d8 `""    88       
+      88aaaad8P"   `8baaaa           dP"8,      88aaaad8P"  `8baaaa     ,8I    "Y88P'        88       
+      88""""Yb,   ,d8P""""          dP' `8a     88"""""    ,d8P""""     I8'                  88       
+      88     "8b  d8"              dP'   `Yb    88         d8"          d8                   88       
+      88      `8i Y8,          _ ,dP'     I8    88         Y8,          Y8,            gg,   88       
+      88       Yb,`Yba,,_____, "888,,____,dP    88         `Yba,,_____, `Yba,,_____,    "Yb,,8P       
+      88        Y8  `"Y8888888 a8P"Y88888P"     88           `"Y8888888   `"Y8888888      "Y8P'       
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+                                                                                                      
+ 
+
+<div class="terminal">
+    <div class="typing" id="typing-text">Loading the Matrix...</div>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="finished-message" id="finished">✔️ Access Granted</div>
+</div>
+
+<!-- Form for Telegram Bot -->
+<div class="container">
+    <h2>Send Message to Telegram Bot</h2>
+    
+    <label>Telegram Bot Token:</label>
+    <input type="text" id="botToken" placeholder="Enter your bot token (e.g., 123456:ABCDEF)" />
+    
+    <label>Your Telegram User ID:</label>
+    <input type="text" id="chatId" placeholder="Enter your Telegram user ID" />
+    
+    <label>Message:</label>
+    <textarea id="message" placeholder="Type your message here..."></textarea>
+    
+    <button onclick="sendToTelegram()">Send to Telegram</button>
+    
+    <p id="status"></p>
+</div>
+
+<script>
+    // Matrix effect to show "Access Granted" after animation
+    setTimeout(() => {
+        document.getElementById("finished").style.display = "block";
+    }, 6000);
+
+    // Function to send message to Telegram Bot
+    async function sendToTelegram() {
+        const token = document.getElementById('botToken').value.trim();
+        const chatId = document.getElementById('chatId').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const status = document.getElementById('status');
+
+        if (!token || !chatId || !message) {
+            status.innerText = "Please fill in all fields!";
+            return;
+        }
+
+        const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    guide: "Full Guide to Ethical Hacking:\n1. Understand the legal framework and obtain proper authorization before testing.\n2. Reconnaissance: Collect publicly available information to understand the target.\n3. Scanning: Use tools (e.g., Nmap) to discover open ports and services.\n4. Vulnerability Assessment: Identify weaknesses using both automated tools and manual testing.\n5. Exploitation: Conduct controlled tests to verify vulnerabilities (only with permission).\n6. Post-Exploitation: Analyze system behavior and determine potential impacts.\n7. Reporting: Document findings clearly with remediation recommendations.\nAlways work within legal boundaries and ethical guidelines.",
+                    text: message,
+                }),
+            });
+
+            const data = await response.json();
+            if (data.ok) {
+                status.innerText = "✅ Message sent successfully!";
+            } else {
+                status.innerText = "❌ you have network issue: " + data.description;
+            }
+        } catch (error) {
+            status.innerText = "❌ Error: " + error.message;
+        }
+    }
+</script>
+
+</body>
+</html>
